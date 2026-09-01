@@ -4,6 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Emilio Girard</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23222'/%3E%3Ctext x='32' y='43' font-family='Helvetica,Arial,sans-serif' font-size='30' font-weight='700' fill='%23fff' text-anchor='middle'%3EEG%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://emiliogirard.com/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Emilio Girard">
+<meta property="og:description" content="I measure AI systems on real hardware, from 5-watt boards to a B200. Montréal.">
+<meta property="og:url" content="https://emiliogirard.com/">
+<meta property="og:image" content="https://emiliogirard.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Emilio Girard">
+<meta name="twitter:description" content="I measure AI systems on real hardware, from 5-watt boards to a B200. Montréal.">
+<meta name="twitter:image" content="https://emiliogirard.com/og.png">
 <meta name="description" content="Emilio Girard. I measure AI systems on real hardware, from 5-watt boards to a B200. Montréal.">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Emilio Girard",
@@ -11,7 +24,7 @@
 "description":"AI systems and measurement: joules per successful task on robot policies, speculative decoding acceptance, agent round-trip costs. Hardware from Jetson to B200.",
 "address":{"@type":"PostalAddress","addressLocality":"Montréal","addressCountry":"CA"},
 "email":"mailto:pyloxsystems@gmail.com",
-"sameAs":["https://github.com/pyloxsystems","https://huggingface.co/pyloxsystems"]}
+"sameAs":["https://github.com/pyloxsystems","https://github.com/girardemilio3-svg","https://huggingface.co/pyloxsystems","https://huggingface.co/emiliogirard"]}
 </script>
 <style>
 body{max-width:800px;margin:0 auto;padding:30px 20px 60px;
@@ -34,6 +47,23 @@ ul{margin:8px 0 8px 22px}
 li{margin:5px 0}
 .dim{color:#777}
 .footer{margin-top:44px;color:#999;font-size:13px}
+.status{background:#f4f6f8;border-left:3px solid #3670a8;padding:10px 14px;margin:18px 0;font-size:14.5px}
+.status b{color:#222}
+.tl{list-style:none;margin:8px 0;padding:0}
+.tl li{margin:6px 0;padding-left:0}
+.tl .d{display:inline-block;min-width:92px;color:#888;font-size:13px}
+.wrap{overflow-x:auto}
+@media (max-width:600px){
+  body{padding:20px 14px 40px;font-size:14.5px}
+  h1{font-size:26px}
+  .links a{margin-right:10px;display:inline-block;margin-bottom:4px}
+  table,thead,tbody,tr,td,th{display:block}
+  th{display:none}
+  tr{border-bottom:1px solid #eee;padding:6px 0}
+  td{border:none;padding:2px 0}
+  td:first-child{font-weight:600;color:#222}
+  .tl .d{display:block;min-width:0}
+}
 </style>
 </head>
 <body>
@@ -44,12 +74,28 @@ li{margin:5px 0}
   <a href="mailto:pyloxsystems@gmail.com">email</a>
   <a href="https://github.com/pyloxsystems">github</a>
   <a href="https://huggingface.co/pyloxsystems">hugging face</a>
+  <a href="cv.pdf">cv (pdf)</a>
   <a href="plain.html">full project ledger</a>
 </div>
 
 <hr>
 
-<p>Ex aerospace CNC machinist. Now I do AI systems work in Montréal: energy measurements on robot policies, inference benchmarks, agent tooling. I publish my failed experiments along with the ones that worked.</p>
+<p>In plain terms: I make AI models run faster and cheaper on hardware that has limits, and I measure what they actually cost in watts, joules and GPU time. That means robot policies on a 15 W Jetson, speculative decoding on a single GPU, and serving records on a B200. I publish my failed experiments along with the ones that worked.</p>
+
+<div class="status"><b>Status:</b> Montréal, remote-first. Open to conversations about ML-systems and inference-infrastructure work (research engineer, performance engineer, edge deployment). <a href="mailto:pyloxsystems@gmail.com">Email me</a>; I answer within a day.</div>
+
+<h2>Timeline</h2>
+<ul class="tl">
+<li><span class="d">Trade</span>DEP in Machining Techniques, Rosemount Technology Centre, Montréal. Operator on a Mazak Integrex e-670H at Mecaer America (Laval), machining F-35 landing gear steering head components in titanium.</li>
+<li><span class="d">Nov 2025</span>DGX Spark (GB10) becomes the daily driver. Pylox Systems Inc. starts as a one-person lab.</li>
+<li><span class="d">Feb 2026</span>Eva, a WhatsApp coordination agent, goes into daily production at a construction firm. Pylox Vision, an 8-camera Jetson detection and re-identification stack, runs at a pilot site (74K events).</li>
+<li><span class="d">Apr 2026</span>First public fine-tunes on Hugging Face, each with a benchmark table against its base model.</li>
+<li><span class="d">May 2026</span>Three published-paper reproductions on the Jetson Orin Nano. Hochelaga-8B, the first open-weights Québec French model. Quatroo Llama-8B serving records on a single B200, cross-validated in two datacenters.</li>
+<li><span class="d">Jun 2026</span>Full-duplex 7B speech model answering a real Montréal phone number. Connectome-as-reservoir experiments across 14 connectomes.</li>
+<li><span class="d">Jul 2026</span>Maxim, a Québécois voice assistant, first serves the public web; in August it moves onto the Spark on my desk.</li>
+<li><span class="d">Aug 2026</span>Joules Per Task: first hardware energy measurements for a VLA policy, then a four-policy spectrum. Per-block drafter selection: 7,309 counterfactual blocks across four drafters.</li>
+<li><span class="d">Sep 2026</span>Starting a college AI program in Montréal alongside the lab work.</li>
+</ul>
 
 <h2>Hardware I've worked on</h2>
 
@@ -82,13 +128,15 @@ li{margin:5px 0}
 <tr><td class="dim">Apps</td><td>Node.js · FastAPI · Next.js · SwiftUI · hand-written WebGL2</td></tr>
 </table>
 
-<h2>Papers</h2>
+<h2>Papers with public code and data</h2>
 <div class="entry"><b>Joules Per Task: Energy Measurements for Learned Policies on Embedded Hardware.</b>
 <a href="https://github.com/pyloxsystems/joules-per-task">code</a><br>
 <span class="dim">Preparing submission. First energy numbers for a vision-language-action policy in the literature, now extended across four policies spanning 0.2M to 450M parameters on one Jetson. A 19M diffusion policy costs 5x a 30M transformer policy, so parameter count is a bad proxy for edge energy. Includes the vision-reuse failure boundary and six documented deployment traps.</span></div>
 <div class="entry"><b>Per-Block Drafter Selection in Speculative Decoding.</b>
 <a href="https://github.com/pyloxsystems/per-block-drafter-selection">code</a><br>
 <span class="dim">In preparation. 7,309 blocks with four drafters verified on identical prefixes across two GPUs. Workload-level routing is a measured null at 0.6% headroom; per-block confidence selection captures 61% of a 13.3% oracle gap, and transfers to code, math and chat but carries no signal on copy. Every number has a bootstrap interval, and the wall-clock break-even condition is stated rather than assumed.</span></div>
+<h2>Work in progress</h2>
+<p class="dim">Listed so the scope is visible; none of these has a public artifact yet, so treat them as claims about work in flight rather than results.</p>
 <div class="entry"><b>Aesthetic Attractors in Recursive Multi-Model Diffusion.</b><br>
 <span class="dim">Draft complete. Seven models fed their own output for 1,000 iterations each converge to distinct attractors; ~8,000-frame dataset.</span></div>
 <div class="entry"><b>Hochelaga: Québec-Native Foundation Modeling on Blackwell.</b><br>
@@ -103,7 +151,7 @@ li{margin:5px 0}
 <li>First published hardware energy measurements for a VLA policy: 963 J per successful task, cut to 489 J with no accuracy loss.</li>
 <li>Measured that inference structure, not parameter count, sets edge energy: a 19M diffusion policy burns 5x a 30M transformer policy, and the identical vision-reuse optimization returns 18.9x on one and 1.55x on the other.</li>
 <li>43,509 to 69,461 tok/s aggregate serving Llama-3.1-8B on a single B200, verified across two datacenters. 3,492 to 5,025 tok/s sustained single-stream.</li>
-<li>Hochelaga-8B beats Claude Opus 4.7 on QFrCoLA (85.4 vs 83.9), trained on a corpus I assembled. First open-weights Québec-native model.</li>
+<li>Hochelaga-8B scores 85.44% accuracy on QFrCoLA against 83.85% for Claude Opus 4.7, both on the same 7,546-item test split of graalul/qfrcola, the Opus number measured by me through the API with the same prompt. Table and setup in the <a href="https://huggingface.co/pyloxsystems/hochelaga-8b">model card</a>. First open-weights Québec-native model, trained on a corpus I assembled.</li>
 <li>Full-parameter continued pretrain of a 24B on 4x B200 under FSDP2.</li>
 <li>A full-duplex 7B answering a real Montréal phone number, with mid-conversation answer injection from a larger model.</li>
 <li>A Québécois voice assistant live on the public web, served entirely from a DGX Spark on my desk, 0.5 s median voice latency.</li>
@@ -114,12 +162,12 @@ li{margin:5px 0}
 
 <h2>Projects</h2>
 <ul>
-<li><b>Maxim</b>: Québécois voice assistant, live on the public web, served from the desk.</li>
+<li><b><a href="https://maximquebec.com">Maxim</a></b>: Québécois voice assistant, live on the public web, served from the DGX Spark on my desk. Open it and talk to it.</li>
 <li><b>The phone line</b>: a full-duplex 7B answering a real Montréal number with mid-conversation answer injection.</li>
-<li><b><a href="https://github.com/pyloxsystems/per-block-drafter-selection">Mach engine</a></b>: hand-written 13-variant speculative-decoding harness; cascades, best-of-N, grammar-pruned trees. The per-block counterfactual logs are public.</li>
+<li><b>Mach engine</b> (private): hand-written 13-variant speculative-decoding harness; cascades, best-of-N, grammar-pruned trees. The per-block counterfactual logs it produced are public in <a href="https://github.com/pyloxsystems/per-block-drafter-selection">per-block-drafter-selection</a>.</li>
 <li><b>agentos</b>: stripped OS plus typed-operation daemon for measuring and reducing agent round-trips.</li>
 <li><b>Hochelaga corpus</b>: provenance-tracked Québec French pretraining corpus; Hansard, CanLII, joual speech.</li>
-<li><b><a href="https://huggingface.co/pyloxsystems">15 fine-tuned models</a></b>: legal, SQL, counseling, voice, agents; benchmark tables in every card, including two that lose to base.</li>
+<li><b><a href="https://huggingface.co/pyloxsystems">10 public models</a></b>: legal, SQL, customer support, voice, agents, Hochelaga; benchmark tables in every card, including three adapters that lose to their base model in pairwise judging (15%, 32% and 14% win rates, stated on the cards).</li>
 <li><b><a href="https://github.com/pyloxsystems/risk-aware-terrain-jetson">risk-aware-terrain-jetson</a></b>: IEEE T-IV reproduction on the Orin with added energy numbers.</li>
 <li><b><a href="https://github.com/pyloxsystems/cbcl-pr-jetson">cbcl-pr-jetson</a></b>: class-incremental learning reproduction, five seeds, quantization ablation.</li>
 <li><b><a href="https://github.com/pyloxsystems/pylox-vision-demo">pylox-vision-demo</a></b>: 8-camera detection and re-identification stack.</li>
@@ -130,7 +178,7 @@ li{margin:5px 0}
 <li>Everything else, including the failures: <a href="plain.html">the full ledger</a>.</li>
 </ul>
 
-<div class="footer">Last updated August 2026.</div>
+<div class="footer">Last updated September 2026. Every number on this page traces to a run artifact; the <a href="plain.html">ledger</a> says which.</div>
 
 </body>
 </html>
