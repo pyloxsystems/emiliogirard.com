@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emilio Girard</title>
+<meta name="description" content="Emilio Girard. I measure AI systems on real hardware, from 5-watt boards to a B200. Montréal.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Emilio Girard",
+"jobTitle":"AI Systems Researcher","url":"https://emiliogirard.com",
+"description":"AI systems and measurement: joules per successful task on robot policies, speculative decoding acceptance, agent round-trip costs. Hardware from Jetson to B200.",
+"address":{"@type":"PostalAddress","addressLocality":"Montréal","addressCountry":"CA"},
+"email":"mailto:pyloxsystems@gmail.com",
+"sameAs":["https://github.com/pyloxsystems","https://huggingface.co/pyloxsystems"]}
+</script>
+<style>
+body{max-width:800px;margin:0 auto;padding:30px 20px 60px;
+  font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:#333}
+h1{font-size:30px;font-weight:600;margin-bottom:2px}
+.tagline{color:#555;margin-bottom:10px}
+.links a{color:#777;text-decoration:none;margin-right:14px;font-size:14px}
+.links a:hover{color:#333}
+hr{border:none;border-top:1px solid #ddd;margin:26px 0}
+h2{font-size:20px;font-weight:600;margin:30px 0 12px}
+h3{font-size:16px;font-weight:600;margin:18px 0 4px}
+p{margin:10px 0}
+a{color:#3670a8}
+.entry{margin:16px 0}
+.entry .yrs{color:#888;font-size:13px}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:12px 0}
+td,th{text-align:left;padding:5px 14px 5px 0;border-bottom:1px solid #eee;vertical-align:top}
+th{color:#888;font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em}
+ul{margin:8px 0 8px 22px}
+li{margin:5px 0}
+.dim{color:#777}
+.footer{margin-top:44px;color:#999;font-size:13px}
+</style>
+</head>
+<body>
+
+<h1>Emilio Girard</h1>
+<div class="tagline">I measure AI systems on real hardware, from 5-watt boards to a B200 ⚡📏🤖</div>
+<div class="links">
+  <a href="mailto:pyloxsystems@gmail.com">email</a>
+  <a href="https://github.com/pyloxsystems">github</a>
+  <a href="https://huggingface.co/pyloxsystems">hugging face</a>
+  <a href="plain.html">full project ledger</a>
+</div>
+
+<hr>
+
+<p>Ex aerospace CNC machinist. Now I do AI systems work in Montréal: energy measurements on robot policies, inference benchmarks, agent tooling. I publish my failed experiments along with the ones that worked.</p>
+
+<h2>Hardware I've worked on</h2>
+
+<table>
+<tr><th>Device</th><th>What I did on it</th></tr>
+<tr><td>Raspberry Pi 5</td><td>agentosd daemon; rootless stripped-OS builds; cluster node</td></tr>
+<tr><td>2x Jetson Orin Nano</td><td>the JPT energy measurements; TensorRT ports of three published papers at INT8/FP16; 263 fps terrain navigation; MAXN tuning, Tegra cuBLAS quirks</td></tr>
+<tr><td>Apple M2 Studio / M4 MacBook</td><td>Metal targets; SwiftUI clients for the camera and voice systems</td></tr>
+<tr><td>NVIDIA DGX Spark (GB10, sm_121)</td><td>daily driver: 24B full-parameter CPT, EAGLE-3/DFlash drafter training, NVFP4 serving, a live voice product served from my desk, unified-memory wall daemons</td></tr>
+<tr><td>RTX 3080</td><td>the first live deployment of the Maxim voice stack</td></tr>
+<tr><td>RTX 5090</td><td>33.8x warm sustained speculation; the 6,361-block counterfactual collection; F5-TTS render farm</td></tr>
+<tr><td>RTX Pro 6000 Blackwell</td><td>production voice serving; 30B diffusion-LM training experiments; MoshiRAG</td></tr>
+<tr><td>A100</td><td>full-duplex speech serving for the phone line</td></tr>
+<tr><td>H100</td><td>trained the full-duplex speech model on its 147-hour joual corpus, FSDP across two cards</td></tr>
+<tr><td>B200 (up to 4x, sm_100)</td><td>full-parameter 24B pretrain; the Llama-8B serving records, verified across two datacenters; the 70B single-stream record runs</td></tr>
+<tr><td>42-CPU Ray cluster</td><td>distributed CPU work across the whole fleet, Pi to Spark</td></tr>
+</table>
+
+<h2>Stack</h2>
+<table>
+<tr><td class="dim" style="white-space:nowrap">GPU architectures</td><td>sm_87 (Orin) · sm_100 (B200) · sm_120 (5090, Pro 6000) · sm_121 (GB10) · Apple Metal</td></tr>
+<tr><td class="dim">Inference engines</td><td>TensorRT · TensorRT-LLM · vLLM · SGLang · llama.cpp · ONNX Runtime</td></tr>
+<tr><td class="dim">Quantization</td><td>NVFP4 · MXFP4 · FP8 KV-cache · INT8 QDQ with calibration · GGUF (IQ3_XXS, Q4_K_M) · TensorRT Model Optimizer</td></tr>
+<tr><td class="dim">Speculative decoding</td><td>EAGLE-3 · DFlash · Medusa · MTP · suffix automaton · n-gram · grammar-constrained trees · self-distilled drafters · SpecForge</td></tr>
+<tr><td class="dim">Training</td><td>full-parameter CPT · SFT · DPO · GRPO · distillation · FSDP2/DTensor · LoRA · QLoRA · DoRA · PiSSA · rsLoRA · NeMo · Unsloth · LLaMA-Factory · Axolotl</td></tr>
+<tr><td class="dim">Speech</td><td>Moshi/Mimi full-duplex · PersonaPlex · F5-TTS · Whisper · NVIDIA Canary · custom codec upsamplers</td></tr>
+<tr><td class="dim">Vision</td><td>YOLO (v8 to 11) · RT-DETR · OSNet Re-ID · Frigate NVR · go2rtc · COLMAP · gaussian splatting (gsplat, NeRFStudio) · RoomPlan LiDAR</td></tr>
+<tr><td class="dim">Retrieval and data</td><td>Qdrant · Neo4j · Postgres · SQLite · full-text search at 554K documents · BM25 + dense hybrid · embedding pipelines</td></tr>
+<tr><td class="dim">Systems</td><td>CUDA · PyTorch · Ray · ROS 2 · Gazebo · Docker · systemd · Ansible · PM2 · Cloudflare tunnels and Pages · Tailscale · Telnyx telephony · MQTT · Linux from kernel boot params up</td></tr>
+<tr><td class="dim">Apps</td><td>Node.js · FastAPI · Next.js · SwiftUI · hand-written WebGL2</td></tr>
+</table>
+
+<h2>Papers</h2>
+<div class="entry"><b>Joules Per Task: Energy Measurements for Learned Policies on Embedded Hardware.</b>
+<a href="https://github.com/pyloxsystems/joules-per-task">code</a><br>
+<span class="dim">Preparing submission. First energy numbers for a vision-language-action policy in the literature, now extended across four policies spanning 0.2M to 450M parameters on one Jetson. A 19M diffusion policy costs 5x a 30M transformer policy, so parameter count is a bad proxy for edge energy. Includes the vision-reuse failure boundary and six documented deployment traps.</span></div>
+<div class="entry"><b>Per-Block Drafter Selection in Speculative Decoding.</b>
+<a href="https://github.com/pyloxsystems/per-block-drafter-selection">code</a><br>
+<span class="dim">In preparation. 7,309 blocks with four drafters verified on identical prefixes across two GPUs. Workload-level routing is a measured null at 0.6% headroom; per-block confidence selection captures 61% of a 13.3% oracle gap, and transfers to code, math and chat but carries no signal on copy. Every number has a bootstrap interval, and the wall-clock break-even condition is stated rather than assumed.</span></div>
+<div class="entry"><b>Aesthetic Attractors in Recursive Multi-Model Diffusion.</b><br>
+<span class="dim">Draft complete. Seven models fed their own output for 1,000 iterations each converge to distinct attractors; ~8,000-frame dataset.</span></div>
+<div class="entry"><b>Hochelaga: Québec-Native Foundation Modeling on Blackwell.</b><br>
+<span class="dim">In progress. Corpus assembly, tokenizer extension, CPT and evaluation of the first open-weights Québec French model.</span></div>
+<div class="entry"><b>Quatroo: Llama-8B Serving Records on a Single B200.</b><br>
+<span class="dim">Technical report with cross-datacenter validation and the honest diverse-workload ceiling; reproduction scripts written, public release pending.</span></div>
+<div class="entry"><b>Connectome Topology as a Reservoir Substrate.</b><br>
+<span class="dim">Results complete, write-up pending. One positive result and two nulls across 14 connectomes and four phyla.</span></div>
+
+<h2>Achievements</h2>
+<ul>
+<li>First published hardware energy measurements for a VLA policy: 963 J per successful task, cut to 489 J with no accuracy loss.</li>
+<li>Measured that inference structure, not parameter count, sets edge energy: a 19M diffusion policy burns 5x a 30M transformer policy, and the identical vision-reuse optimization returns 18.9x on one and 1.55x on the other.</li>
+<li>43,509 to 69,461 tok/s aggregate serving Llama-3.1-8B on a single B200, verified across two datacenters. 3,492 to 5,025 tok/s sustained single-stream.</li>
+<li>Hochelaga-8B beats Claude Opus 4.7 on QFrCoLA (85.4 vs 83.9), trained on a corpus I assembled. First open-weights Québec-native model.</li>
+<li>Full-parameter continued pretrain of a 24B on 4x B200 under FSDP2.</li>
+<li>A full-duplex 7B answering a real Montréal phone number, with mid-conversation answer injection from a larger model.</li>
+<li>A Québécois voice assistant live on the public web, served entirely from a DGX Spark on my desk, 0.5 s median voice latency.</li>
+<li>Real neural wiring beats degree-matched random graphs as a reservoir computer: R² 0.759 ± 0.014 vs 0.612 ± 0.047, winning 10 of 10 seeds.</li>
+<li>Typed system operations cut an agent's tool round-trips from 3 to 1 and its token cost by 3.1x to 3.7x, on a small two-task benchmark.</li>
+<li>Three published-paper reproductions on a 15 W Jetson with added energy measurements.</li>
+</ul>
+
+<h2>Projects</h2>
+<ul>
+<li><b>Maxim</b>: Québécois voice assistant, live on the public web, served from the desk.</li>
+<li><b>The phone line</b>: a full-duplex 7B answering a real Montréal number with mid-conversation answer injection.</li>
+<li><b><a href="https://github.com/pyloxsystems/per-block-drafter-selection">Mach engine</a></b>: hand-written 13-variant speculative-decoding harness; cascades, best-of-N, grammar-pruned trees. The per-block counterfactual logs are public.</li>
+<li><b>agentos</b>: stripped OS plus typed-operation daemon for measuring and reducing agent round-trips.</li>
+<li><b>Hochelaga corpus</b>: provenance-tracked Québec French pretraining corpus; Hansard, CanLII, joual speech.</li>
+<li><b><a href="https://huggingface.co/pyloxsystems">15 fine-tuned models</a></b>: legal, SQL, counseling, voice, agents; benchmark tables in every card, including two that lose to base.</li>
+<li><b><a href="https://github.com/pyloxsystems/risk-aware-terrain-jetson">risk-aware-terrain-jetson</a></b>: IEEE T-IV reproduction on the Orin with added energy numbers.</li>
+<li><b><a href="https://github.com/pyloxsystems/cbcl-pr-jetson">cbcl-pr-jetson</a></b>: class-incremental learning reproduction, five seeds, quantization ablation.</li>
+<li><b><a href="https://github.com/pyloxsystems/pylox-vision-demo">pylox-vision-demo</a></b>: 8-camera detection and re-identification stack.</li>
+<li><b><a href="https://github.com/pyloxsystems/joules-per-task">joules-per-task</a></b>: energy measurement harness for learned policies on Jetson, with the full export pipeline and paper.</li>
+<li><b>Splat Montréal</b>: iPhone-to-gaussian-splat capture pipeline, run as a service.</li>
+<li><b>Anvil</b>: 554K-document full-text index over 1,659 CUDA/NVIDIA repos, wired into a coding agent.</li>
+<li><b>Eva</b>: WhatsApp coordination agent in daily production use at a construction firm.</li>
+<li>Everything else, including the failures: <a href="plain.html">the full ledger</a>.</li>
+</ul>
+
+<div class="footer">Last updated August 2026.</div>
+
+</body>
+</html>

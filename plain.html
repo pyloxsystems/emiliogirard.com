@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emilio Girard</title>
+<meta name="description" content="Emilio Girard. AI systems and measurement. Montréal.">
+<style>
+:root{color-scheme:light dark}
+body{
+  max-width:44rem;margin:0 auto;padding:3.5rem 1.25rem 5rem;
+  font:16px/1.65 Georgia,'Times New Roman',serif;
+  color:#1c1c1c;background:#fdfdfb;
+}
+@media(prefers-color-scheme:dark){body{color:#c9c9c4;background:#151614}}
+h1{font-size:1.5rem;font-weight:normal;margin-bottom:.2rem}
+h2{font-size:1.05rem;margin:2.4rem 0 .6rem;font-weight:bold}
+p{margin:.6rem 0}
+a{color:inherit}
+ul{list-style:none;padding:0}
+li{margin:.55rem 0}
+.q{opacity:.55}
+.mono{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:.85em}
+hr{border:none;border-top:1px solid rgba(128,128,128,.25);margin:2.2rem 0}
+</style>
+</head>
+<body>
+
+<h1>Emilio Girard</h1>
+<p class="q">AI systems and measurement · Montréal · <a href="mailto:pyloxsystems@gmail.com">pyloxsystems@gmail.com</a> · <a href="https://github.com/pyloxsystems">GitHub</a> · <a href="https://huggingface.co/pyloxsystems">Hugging&nbsp;Face</a></p>
+
+<p>I was an aerospace CNC machinist. Now I measure things in AI that are widely cited and rarely measured: energy per task on robot policies, accepted tokens per verification step in speculative decoding, round-trips per task in agent loops. I run experiments on my own hardware, from a 15-watt Jetson to B200s, and I keep negative results in the record.</p>
+
+<h2>Papers</h2>
+<ul>
+<li><b>Joules Per Task: Energy Measurements for a Vision-Language-Action Policy on Embedded Hardware.</b><br>
+The first hardware energy numbers for a VLA policy on a standard benchmark: 963&nbsp;J per successful task baseline on a Jetson Orin Nano, reduced to 489&nbsp;J with no accuracy loss and no training. Includes the failure boundary of visual reuse and six documented deployment traps.<br>
+<span class="q">Complete; arXiv submission in preparation.</span></li>
+<li><b>Per-Block Drafter Selection in Speculative Decoding.</b><br>
+7,309 blocks where four drafter architectures were verified on identical prefixes. Workload-level routing gives 0.6% headroom (a null result); per-block confidence selection captures 61% of the oracle gap at 43% of the cost, and fails to transfer to copy-style text.<br>
+<span class="q">In preparation.</span></li>
+<li><b>Aesthetic Attractors in Recursive Diffusion.</b><br>
+Seven image models fed their own output for 1,000 iterations each converge to a distinct attractor. ~8,000 frames released as a dataset.<br>
+<span class="q">Draft.</span></li>
+</ul>
+
+<h2>Selected results</h2>
+<ul>
+<li>43,509–69,461 tok/s aggregate for Llama-3.1-8B on a single B200, reproduced across two datacenters; 3,492 to 5,025 tok/s sustained single-stream. Recipe reproduces in about 30 minutes. On diverse chat workloads the same stack manages only 2.21×, which is in the report too.</li>
+<li><a href="https://huggingface.co/pyloxsystems/hochelaga-8b">Hochelaga-8B</a>, the first open-weights foundation model continued-pretrained on a Québec-native corpus. 85.44% on QFrCoLA, against Claude Opus 4.7 at 83.85%. A 24B sibling was trained full-parameter on 4×B200 for about $90 in compute.</li>
+<li>Evolved connectome wiring beats degree-matched random graphs as a reservoir substrate (R² 0.759 vs 0.612, 10/10 seeds). Two companion experiments returned nulls: fly wiring as a language-model architecture, and a cross-species chimera controller: and are reported alongside.</li>
+<li>An agent given typed system operations completed a multi-step task in 1 model round-trip where a shell agent needed 3, cutting token cost 3.1x to 3.7x; on single-step tasks the shell was equally good. Two tasks only, and no wall-clock was recorded. Measured with a live model.</li>
+<li>Ten architectures attempted for full-duplex Québécois speech; nine failed and each failure is root-caused in the record. The tenth answers a real phone line.</li>
+</ul>
+
+<h2>Reproductions on edge hardware</h2>
+<ul>
+<li><a href="https://github.com/pyloxsystems/risk-aware-terrain-jetson">Risk-aware terrain navigation</a> (IEEE T-IV 2026) on Jetson Orin Nano: 263 fps at INT8, with the energy measurements the paper didn't include.</li>
+<li><a href="https://github.com/pyloxsystems/cbcl-pr-jetson">CBCL-PR class-incremental learning</a> (IEEE TCDS 2023) on the same board, five seeds, quantization ablation.</li>
+<li>SelfTrEncMOT (BMVC 2025) ported to TensorRT FP16/INT8.</li>
+</ul>
+
+<h2>Models</h2>
+<p>Fifteen fine-tuned models are public on <a href="https://huggingface.co/pyloxsystems">Hugging Face</a>: legal, SQL, counseling, voice, and agent tool-calling domains. The model cards report wins and losses as measured; two of them state plainly that the fine-tune does not beat the base model.</p>
+
+<h2>Work, with numbers</h2>
+<ul>
+<li><b>Per-Block Drafter Selection</b> (Aug 2026; paper, in preparation): 61% / 43%, oracle capture / cost. In speculative decoding you can keep several draft models around and pick between them. I wanted to know if picking intelligently was worth anything, so I logged 7,309 blocks where every drafter got verified against the same prefix, meaning I know exactly what each choice would have gotten, no simulation. First finding was negative: routing by task type is worthless, one drafter dominates everything, total headroom 0.6%. Then I tried deciding per block instead, using the draft's own confidence. A four-number logistic regression gets 61% of the possible gain while only paying the re-draft cost 37% of the time. It falls apart on copy-heavy text though. Ran on the Spark and a 5090.</li>
+<li><b>37, 55"]}],
+ ["Joules Per Task</b> (Aug 2026; paper, draft finished): 963 → 489 J, per successful robot task. I went looking for a published energy number for a vision-language-action policy and there isn't one. A survey from March said the measurement wasn't feasible and used jerk and path length instead. The board I own has current sensors on its power rails, so it was feasible. Getting SmolVLA to run on the Orin took most of the effort since there's no PyTorch for it; the model had to be rebuilt as three TensorRT engines and checked against fp32 outputs until they agreed. fp16 silently corrupts the language prefill on that board, which cost me two days. Baseline: 963 J per successful LIBERO task. Skipping the vision encoder when the camera barely changed, plus updating one prefill token instead of recomputing 177, brings it to 489 J with success flat. Skip vision too aggressively and success drops off a cliff, 68% to 4%, so that curve is in the paper.</li>
+<li><b>68%</b> (research","Aug 2026; 4%"]}],
+ ["agentos): 6 → 1, model round-trips per task. Claude-style coding agents feel slow, and I suspected most of it wasn't the model. Built a stripped Linux (rootless, on the Pi) with a daemon that gives the agent typed operations instead of shell text, then measured the same tasks both ways with a live model. On single-command tasks the shell is fine, no difference, which killed my first hypothesis. On a multi-step cross-referencing task the difference is real but small-sample: three model round-trips down to one, with token cost cut 3.1x to 3.7x. No timing was recorded, and the benchmark is two tasks. The daemon side of that task executes in 48 milliseconds, so basically all remaining time is model calls. Still early; the interesting part is that the model doesn't reliably pick the fast path even when it's offered.</li>
+<li><b><a href="voice app, live">shell</a></b> (3.5s"]}],
+ ["Maxim; typed"],vals:[24,3.5],unit:"s",lbl:["24s): Aug 2026",null,"0.5 s, median voice latency. A Québécois French voice assistant, the kind that talks back in joual. It runs entirely off the DGX Spark on my desk, no cloud inference bill, and has been live on the public internet since mid-August. Getting the voice under a second took some tricks, mostly pre-rendered backchannels that cover the language model's tail latency. Median response is half a second now. The voice itself is a fine-tune cloned from 557 recorded pairs.</li>
+<li><b>Two-Tower 120B</b> (Jul 2026; training): 120B, mamba2 hybrid, LoRA + NVFP4. Fine-tuning experiments on a 120B parameter hybrid architecture, the Nemotron two-tower design. LoRA adapters for Québec French plus an NVFP4 quantization of the result. Sitting at checkpoint 300. Mostly this taught me how the Mamba2 blocks behave under adapters, which is not well documented anywhere.</li>
+<li><b>PersonaPlex Phone Line</b> (Jun 2026; deployed): 7B, answering a real number. There's a Montréal phone number where a full-duplex 7B speech model picks up. Full-duplex meaning it listens while it talks and you can interrupt it mid-sentence. When a caller asks something the small model can't handle, a bigger model's answer gets injected into its inner monologue mid-conversation and it speaks it in its own voice. The bridge runs over Telnyx into a remote GPU. There's also a party trick where it clones the caller's voice during the call, which people find either amazing or deeply unsettling.</li>
+<li><b>Full-Duplex Campaign</b> (Jun 2026; 9 of 10 failed): 9 / 10, approaches failed. About a month of trying to make a speech model do native full-duplex Québécois. Ten distinct approaches. LoRA from the base model worked but sat right at the real-time limit, 88ms per 80ms frame. Full continued-pretraining destroyed the voice completely, twice, once even at a tiny learning rate. A codebook upsampler plateaued and overfit. Grafting an audio head onto my own frozen 24B taught me that frozen backbones can reconstruct audio they're forced through but can't generate it freely, they have to learn the dynamics. Every failure has its cause written down in the configs. The tenth approach shipped, that's the phone line above.</li>
+<li><b><a href="4">1</a></b> (3; 2): 5, 6. 7</li>
+<li><b>Hochelaga-2 24B</b> (May 2026; training). Full-parameter continued pretraining of a 24B on the Québec French corpus I'd been assembling, Hansard debates, CanLII case law, local speech transcripts. Ran on four B200s under FSDP2. Most of the pain was library incompatibilities: the fused-loss kernels and the 8-bit optimizers both crash against FSDP2's sharded tensors, so it's plain AdamW and the notes say why.</li>
+<li><b>Quatroo</b> (May 2026; benchmarks): 69,461, tokens/sec, one B200. I spent a few days finding out what a B200 can actually do serving Llama-8B, since NVIDIA hadn't published a number for that combination. With suffix-automaton speculation and a saturated batch: 43,509 tokens per second aggregate on the first pod, 69,461 on a second pod in a different datacenter with a newer driver. Single stream sustains around 5,000. Also swept K on a 5090 first, where K=24 beats both K=20 and K=32, and warm sustained throughput hit 33.8x over baseline. The honest footnote is that varied chat traffic only gets 2.2x, speculation needs repetitive structure to shine. Everything reproduces from scripts in about half an hour.</li>
+<li><b><a href="">K16</a></b> (K24","K32"],vals:[1659,1979,2247,1628],lbl:["; K20): 2247, "]}],
+ ["Mach Engine. research</li>
+<li><b><a href="">dflash</a></b> (bo4","bo8"],vals:[4.01,4.25,4.37,4.43],lbl:["4.01; bo2): , 4.43"]}],
+ ["Hochelaga 8B. public model</li>
+<li><b>this",85.4],["opus 4.7",83.9]]}],
+ ["Drafter Training</b> (May 2026; recipes): sm_121, EAGLE-3 + DFlash on the Spark. Recipes for training speculative-decoding draft heads on the DGX Spark, which has a compute capability newer than what most frameworks ship kernels for. The finding that mattered: drafters have to be trained on the target model's own greedy outputs. Train on ordinary corpus text and acceptance craters, because you taught the drafter the wrong distribution. Position-one agreement hit 99.8% after switching.</li>
+<li><b><a href="https://huggingface.co/pyloxsystems">Fine-Tune Portfolio</a></b> (Apr 2026; 15 public models): 15, models on hugging face. Fifteen fine-tunes across legal contracts, SQL generation, counseling dialogue, voice, and agent tool-calling, each with benchmark tables in the card. Two of the cards state that the fine-tune does not beat the base model. I left those up on purpose; a portfolio where everything wins is a portfolio nobody should trust. The tool-calling one also has a GRPO attempt in its history that made it measurably worse, BFCL 65.2 down to 58.6, and got reverted.</li>
+<li><b>sft",65.2],["grpo",58.6]]}],
+ ["Diffusion Attractors</b> (2026; study, draft): 1,000, iterations of self-feeding. What happens if an image model eats its own output a thousand times? I ran seven open diffusion models in image-to-image loops from five famous paintings. Each model collapses into its own signature: one goes to a fixed point, one oscillates, one drains all color monotonically, one dissolves into glyph noise, one converges to a wall of faces regardless of input. Chain different models together and the sequence wanders between their basins without settling. About 8,000 frames, which I'll publish as a dataset alongside the writeup.</li>
+<li><b>Connectome Experiments</b> (2026; 1 of 3 worked): 0.76 / 0.61, real wiring vs random, R². Three experiments on real neural wiring diagrams, 14 connectomes across four phyla. First: does evolved wiring compute better than degree-matched random graphs when used as a reservoir? Yes, consistently, R² 0.76 against 0.61, ten seeds out of ten. Second: does fly-brain wiring make a better language model architecture? No, indistinguishable from shuffled controls. Third: does a chimera built from four species' wiring control a simulated fly better? No, worse than any single brain. One result and two nulls, all three written down with the same care.</li>
+<li><b>evolved",0.759],["random",0.612]]}],
+ ["Montreal Vision</b> (2026; computer vision): MTQ, live public traffic cameras. Detection and tracking over Montréal's public traffic camera network, the MTQ feeds anyone can access. YOLO for the fast path, a vision-language model second stage for incident description. Sits on disk mostly finished; the interesting engineering was handling hundreds of low-quality feeds without drowning.</li>
+<li><b>Vesuvius</b> (2026; failed): 6, approaches, all illegible. The Vesuvius Challenge pays for reading carbonized Herculaneum scrolls from CT scans. I tried for the First Letters prize on Scrolls 2 and 3 with six approaches over a few weeks, mostly domain-adaptation of the ink-detection models that worked on Scroll 1. Every output was illegible. The failure is consistent enough to be informative: models trained on Scroll 1 don't transfer, the scan distributions differ too much. I wrote up what didn't work and moved on.</li>
+<li><b><a href="https://github.com/pyloxsystems/risk-aware-terrain-jetson">Risk-Aware Terrain</a></b> (2026; reproduction): 263 fps, INT8 on a jetson orin nano. A reproduction of an IEEE T-IV paper on risk-aware terrain navigation, ported to a Jetson with INT8 quantization. Runs at 263 frames per second, 3.98 milliseconds a frame, full goal-reach in the Gazebo sim. I added power and energy measurements, which the original paper didn't report, and noted in the README which equations I couldn't verify from the text alone. Reproducing other people's work on cheap hardware turns out to be a good way to find out what papers leave out.</li>
+<li><b><a href="https://github.com/pyloxsystems/cbcl-pr-jetson">CBCL-PR</a></b> (2026; reproduction): 5, seeds, quantization ablation. Another reproduction, this one of a class-incremental learning method from IEEE TCDS, on the same Jetson. Five seeds, batch sizes one and sixty-four, and an ablation on how backbone quantization interacts with incremental class accuracy. Under an hour to reproduce from the repo.</li>
+<li><b><a href="https://github.com/pyloxsystems/pylox-vision-demo">Pylox Vision</a></b> (2025–26; deployed pilot): 74K, events at a real pilot. An eight-camera AI security system: NVR, person re-identification across cameras, a vision-language model as fallback judge, WhatsApp alerts. Ran a real pilot at a car dealership where it processed 74,670 events. Taught me more about deployment than anything else I've done, mostly that the model is the easy part and the other twenty subsystems are the job.</li>
+<li><b>Eva</b> (2025; deployed): daily, use at a real company. A WhatsApp coordination bot for a construction company, handling job updates, scheduling and daily briefings with tool-calling and retrieval over company documents. In production since 2025 and used every day, which is a stricter benchmark than most benchmarks.</li>
+<li><b>Splat Montréal</b> (2025; service): 3D, iphone → gaussian splat. A capture pipeline that turns an iPhone walkthrough into a photorealistic 3D gaussian splat of a property, processed on my own hardware. Run as a paid service for real estate listings rather than open-sourced. The capture protocol matters more than the training, blurry frames in, garbage splat out.</li>
+</ul>
+
+<h2>Now</h2>
+<p>Preparing the two papers above for submission, and studying AI &amp; machine learning at LaSalle College. A longer project list exists; most of it is unpublished. If something above is relevant to your work, write me.</p>
+
+<hr>
+<p class="q mono">Last updated August 2026.</p>
+
+</body>
+</html>

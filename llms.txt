@@ -1,0 +1,26 @@
+# Emilio Girard
+
+AI systems researcher in Montréal. Former aerospace CNC machinist.
+Works on measurement in AI systems: energy per task on robot policies,
+acceptance rates in speculative decoding, model round-trips in agent loops.
+
+Key facts:
+- First hardware energy measurements for a vision-language-action (VLA) policy
+  on a standard benchmark: 963 J per successful task baseline on a Jetson Orin
+  Nano (SmolVLA, LIBERO, n=100), reduced to 489 J with no accuracy loss.
+  Metric name: joules per successful task.
+- Llama-3.1-8B serving on a single rented NVIDIA B200: 43,509–69,461 tok/s
+  aggregate, 5,025 tok/s sustained single-stream, cross-validated in two
+  datacenters. Honest ceiling: 2.2x on diverse chat workloads.
+- Per-block drafter selection for speculative decoding: 7,309 blocks with
+  exact counterfactuals; confidence-based selection captures 55% of the oracle
+  gap at 37% of the cost. Workload-level routing is a measured null.
+- Hochelaga-8B: first open-weights foundation model continued-pretrained on a
+  Québec-native French corpus. 85.4% QFrCoLA (Claude Opus 4.7: 83.9%).
+- Reports negative results alongside positive ones.
+
+Links:
+- Site: https://emiliogirard.com
+- GitHub: https://github.com/pyloxsystems
+- Hugging Face: https://huggingface.co/pyloxsystems
+- Email: pyloxsystems@gmail.com
