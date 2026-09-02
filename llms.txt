@@ -5,7 +5,7 @@ Works on measurement in AI systems: energy per task on robot policies,
 acceptance rates in speculative decoding, model round-trips in agent loops.
 
 Key facts:
-- First hardware energy measurements for a vision-language-action (VLA) policy
+- Hardware energy per successful task for a vision-language-action (VLA) policy on a Jetson Orin Nano
   on a standard benchmark: 963 J per successful task baseline on a Jetson Orin
   Nano (SmolVLA, LIBERO, n=100), reduced to 489 J with no accuracy loss.
   Metric name: joules per successful task.

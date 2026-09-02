@@ -93,7 +93,7 @@ li{margin:5px 0}
 <li><span class="d">May 2026</span>Three published-paper reproductions on the Jetson Orin Nano. Hochelaga-8B, the first open-weights Québec French model. Quatroo Llama-8B serving records on a single B200, cross-validated in two datacenters.</li>
 <li><span class="d">Jun 2026</span>Full-duplex 7B speech model answering a real Montréal phone number. Connectome-as-reservoir experiments across 14 connectomes.</li>
 <li><span class="d">Jul 2026</span>Maxim, a Québécois voice assistant, first serves the public web; in August it moves onto the Spark on my desk.</li>
-<li><span class="d">Aug 2026</span>Joules Per Task: first hardware energy measurements for a VLA policy, then a four-policy spectrum. Per-block drafter selection: 7,309 counterfactual blocks across four drafters.</li>
+<li><span class="d">Aug 2026</span>Joules Per Task: energy per successful task for a VLA policy on the Jetson Orin Nano, then a four-policy spectrum. Per-block drafter selection: 7,309 counterfactual blocks across four drafters.</li>
 <li><span class="d">Sep 2026</span>Starting a college AI program in Montréal alongside the lab work.</li>
 </ul>
 
@@ -131,7 +131,7 @@ li{margin:5px 0}
 <h2>Papers with public code and data</h2>
 <div class="entry"><b>Joules Per Task: Energy Measurements for Learned Policies on Embedded Hardware.</b>
 <a href="https://github.com/pyloxsystems/joules-per-task">code</a><br>
-<span class="dim">Preparing submission. First energy numbers for a vision-language-action policy in the literature, now extended across four policies spanning 0.2M to 450M parameters on one Jetson. A 19M diffusion policy costs 5x a 30M transformer policy, so parameter count is a bad proxy for edge energy. Includes the vision-reuse failure boundary and six documented deployment traps.</span></div>
+<span class="dim">Preparing submission. Energy per successful task for a vision-language-action policy on the smallest Jetson, concurrent with a Shanghai Jiao Tong study on larger Jetsons that reports energy separately from success. Extended across four policies spanning 0.2M to 450M parameters on one Jetson. A 19M diffusion policy costs 5x a 30M transformer policy, so parameter count is a bad proxy for edge energy. Includes the vision-reuse failure boundary and six documented deployment traps.</span></div>
 <div class="entry"><b>Per-Block Drafter Selection in Speculative Decoding.</b>
 <a href="https://github.com/pyloxsystems/per-block-drafter-selection">code</a><br>
 <span class="dim">In preparation. 7,309 blocks with four drafters verified on identical prefixes across two GPUs. Workload-level routing is a measured null at 0.6% headroom; per-block confidence selection captures 61% of a 13.3% oracle gap, and transfers to code, math and chat but carries no signal on copy. Every number has a bootstrap interval, and the wall-clock break-even condition is stated rather than assumed.</span></div>
@@ -148,7 +148,7 @@ li{margin:5px 0}
 
 <h2>Achievements</h2>
 <ul>
-<li>First published hardware energy measurements for a VLA policy: 963 J per successful task, cut to 489 J with no accuracy loss.</li>
+<li>A VLA policy measured on a Jetson Orin Nano at 963 J per successful task, cut to 489 J with no accuracy loss and no training. Energy is charged to successes, so a config that saves power by failing more pays for it.</li>
 <li>Measured that inference structure, not parameter count, sets edge energy: a 19M diffusion policy burns 5x a 30M transformer policy, and the identical vision-reuse optimization returns 18.9x on one and 1.55x on the other.</li>
 <li>43,509 to 69,461 tok/s aggregate serving Llama-3.1-8B on a single B200, verified across two datacenters. 3,492 to 5,025 tok/s sustained single-stream.</li>
 <li>Hochelaga-8B scores 85.44% accuracy on QFrCoLA against 83.85% for Claude Opus 4.7, both on the same 7,546-item test split of graalul/qfrcola, the Opus number measured by me through the API with the same prompt. Table and setup in the <a href="https://huggingface.co/pyloxsystems/hochelaga-8b">model card</a>. First open-weights Québec-native model, trained on a corpus I assembled.</li>
