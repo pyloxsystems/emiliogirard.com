@@ -94,7 +94,7 @@ li{margin:5px 0}
 <li><span class="d">Jun 2026</span>Full-duplex 7B speech model answering a real Montréal phone number. Connectome-as-reservoir experiments across 14 connectomes.</li>
 <li><span class="d">Jul 2026</span>Maxim, a Québécois voice assistant, first serves the public web; in August it moves onto the Spark on my desk.</li>
 <li><span class="d">Aug 2026</span>Joules Per Task: energy per successful task for a VLA policy on the Jetson Orin Nano, then a four-policy spectrum. Per-block drafter selection: 7,309 counterfactual blocks across four drafters.</li>
-<li><span class="d">Sep 2026</span>Starting a college AI program in Montréal alongside the lab work.</li>
+<li><span class="d">Sep 2026</span>SeabedNet: Churchill corridor bathymetry completion, validated on 6.46 million held-out soundings, atlas and report live. Starting a college AI program in Montréal alongside the lab work.</li>
 </ul>
 
 <h2>Hardware I've worked on</h2>
@@ -135,6 +135,11 @@ li{margin:5px 0}
 <div class="entry"><b>Per-Block Drafter Selection in Speculative Decoding.</b>
 <a href="https://github.com/pyloxsystems/per-block-drafter-selection">code</a><br>
 <span class="dim">In preparation. 7,309 blocks with four drafters verified on identical prefixes across two GPUs. Workload-level routing is a measured null at 0.6% headroom; per-block confidence selection captures 61% of a 13.3% oracle gap, and transfers to code, math and chat but carries no signal on copy. Every number has a bootstrap interval, and the wall-clock break-even condition is stated rather than assumed.</span></div>
+<div class="entry"><b>SeabedNet Churchill Corridor Report: Model-Completed Bathymetry and a Shoal-Hazard Field for the Churchill Trade Corridor.</b>
+<a href="https://girardemilio3-svg.github.io/churchill-corridor-atlas/report/">report</a> ·
+<a href="https://girardemilio3-svg.github.io/churchill-corridor-atlas/">atlas</a> ·
+<a href="https://github.com/girardemilio3-svg/seabednet-validation">code and validation cells</a><br>
+<span class="dim">Technical report, September 2026. A masked-completion network trained on the public CHS NONNA archive, scored on depths it never saw. Trained only on pre-2016 soundings, it predicts 6.46 million post-2016 soundings in the corridor to 13.3 m mean error against 18.8 m for the nearest published sounding and 18.1 m for the gravity prior. On 109,044 independent shelf multibeam cells: 4.9 m against 5.5 m gravity and 13.4 m nearest; below 400 m the gravity prior wins and the product defers to it. A separate shoal model predicts the shallowest point within 500 m to 2.6 m where a sounding exists (10.7 m if the archive depth is taken as the shoal). Six TSB groundings hindcast from pre-incident soundings: four fall above the 90th hazard percentile. A 1,314-cell forecast is sealed by SHA-256 and OpenTimestamps for the next survey to grade. Planning prior, not for navigation.</span></div>
 <h2>Work in progress</h2>
 <p class="dim">Listed so the scope is visible; none of these has a public artifact yet, so treat them as claims about work in flight rather than results.</p>
 <div class="entry"><b>Aesthetic Attractors in Recursive Multi-Model Diffusion.</b><br>
@@ -148,6 +153,7 @@ li{margin:5px 0}
 
 <h2>Achievements</h2>
 <ul>
+<li>A seabed-completion model trained on pre-2016 Canadian Hydrographic Service soundings predicts 6.46 million later soundings under the Churchill corridor to 13.3 m, against 18.1 m for the gravity-derived bathymetry that global charts fall back on; the forecast for unsounded cells is sealed and timestamped so the next survey can grade it.</li>
 <li>A VLA policy measured on a Jetson Orin Nano at 963 J per successful task, cut to 489 J with no accuracy loss and no training. Energy is charged to successes, so a config that saves power by failing more pays for it.</li>
 <li>Measured that inference structure, not parameter count, sets edge energy: a 19M diffusion policy burns 5x a 30M transformer policy, and the identical vision-reuse optimization returns 18.9x on one and 1.55x on the other.</li>
 <li>43,509 to 69,461 tok/s aggregate serving Llama-3.1-8B on a single B200, verified across two datacenters. 3,492 to 5,025 tok/s sustained single-stream.</li>
@@ -162,6 +168,7 @@ li{margin:5px 0}
 
 <h2>Projects</h2>
 <ul>
+<li><b><a href="https://girardemilio3-svg.github.io/churchill-corridor-atlas/">SeabedNet</a></b>: model-completed bathymetry, calibrated uncertainty and shoal hazard for every 100 m cell of the Churchill trade corridor, with a sigma-ranked survey plan. Live atlas, public validation cells, sealed forecast.</li>
 <li><b><a href="https://maximquebec.com">Maxim</a></b>: Québécois voice assistant, live on the public web, served from the DGX Spark on my desk. Open it and talk to it.</li>
 <li><b>The phone line</b>: a full-duplex 7B answering a real Montréal number with mid-conversation answer injection.</li>
 <li><b>Mach engine</b> (private): hand-written 13-variant speculative-decoding harness; cascades, best-of-N, grammar-pruned trees. The per-block counterfactual logs it produced are public in <a href="https://github.com/pyloxsystems/per-block-drafter-selection">per-block-drafter-selection</a>.</li>
