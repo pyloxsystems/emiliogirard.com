@@ -7,7 +7,8 @@ acceptance rates in speculative decoding, model round-trips in agent loops.
 Key facts:
 - Hardware energy per successful task for a vision-language-action (VLA) policy on a Jetson Orin Nano
   on a standard benchmark: 963 J per successful task baseline on a Jetson Orin
-  Nano (SmolVLA, LIBERO, n=100), reduced to 489 J with no accuracy loss.
+  Nano (SmolVLA, LIBERO, n=100), reduced to about 786 J (18%) with success not
+  significantly changed (corrected 2026-11-09).
   Metric name: joules per successful task.
 - Llama-3.1-8B serving on a single rented NVIDIA B200: 43,509–69,461 tok/s
   aggregate, 5,025 tok/s sustained single-stream, cross-validated in two

@@ -153,7 +153,7 @@ li{margin:5px 0}
 <h2>Achievements</h2>
 <ul>
 <li>A seabed-completion model trained on pre-2016 Canadian Hydrographic Service soundings predicts 6.46 million later soundings under the Churchill corridor to 13.3 m, against 18.1 m for the gravity-derived bathymetry that global charts fall back on; the forecast for unsounded cells is sealed and timestamped so the next survey can grade it.</li>
-<li>A VLA policy measured on a Jetson Orin Nano at 963 J per successful task, cut to 489 J with no accuracy loss and no training. Energy is charged to successes, so a config that saves power by failing more pays for it.</li>
+<li>A VLA policy measured on a Jetson Orin Nano at 963 J per successful task, cut to about 786 J (18% less) by skipping the vision encoder when the camera barely changes, with success not significantly changed and no training (corrected 2026-11-09). Energy is charged to successes, so a config that saves power by failing more pays for it.</li>
 <li>Measured that inference structure, not parameter count, sets edge energy: a 19M diffusion policy burns 5x a 30M transformer policy, and the identical vision-reuse optimization returns 18.9x on one and 1.55x on the other.</li>
 <li>43,509 to 69,461 tok/s aggregate serving Llama-3.1-8B on a single B200, verified across two datacenters. 3,492 to 5,025 tok/s sustained single-stream.</li>
 <li>Hochelaga-8B scores 85.44% accuracy on QFrCoLA against 83.85% for Claude Opus 4.7, both on the same 7,546-item test split of graalul/qfrcola, the Opus number measured by me through the API with the same prompt. Table and setup in the <a href="https://huggingface.co/pyloxsystems/hochelaga-8b">model card</a>. First open-weights Québec-native model, trained on a corpus I assembled.</li>
